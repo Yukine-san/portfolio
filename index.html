@@ -1,1 +1,179 @@
-<h1>Hello!</h1>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Météo de Cary</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+    <link rel="icon" href="https://static4.mclcm.net/lcm2018/en/common/favicons/120_iPhone_retina.png" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    
+    
+
+
+    
+
+    <!-- Bootstrap core CSS -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/assets/dist/css/bootstrap.min.css') }}">
+
+    <style>
+    #mapid { 
+    height: 600px;
+    weight: 600px;
+    margin: 4rem 0;
+     }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static',filename='styles/carousel.css') }}" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   <script type="text/javascript">
+        var db = openDatabase('weather20', '1.0', 'Test DB', 20 * 4377 * 4377);
+         var msg;
+         db.transaction(function (tx) {  
+            tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+          });
+   </script>
+  </head>
+  <body>
+    
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Accueil</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+       </div>
+      </nav>
+    </header>
+
+<main>
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+    <!-- START THE FEATURETTES -->
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Ce site vous permet de connaitre la météo de Cary entre le 2 janvier 2009 et le 24 décembre 2020.</h2>
+          <p class="text-muted">Vous voulez essayer ?</p>
+          <p><a class="btn btn-secondary" href="#bas" role="button">En savoir plus &raquo;</a></p>
+        <h2 class="lead">Choisissez une date</h2>
+        <img class="image" src="static/giphy.gif" height="352" width="470">
+        <input type="date" id="date_input" name="trip-start" value="2018-07-22"
+         min="2009-01-02" max="2020-12-24"> <!-- var dateControl = document.querySelector('input[type="date"]');
+          dateControl.value = '2017-06-01'; Pour récupérer la valeur de la date en javascript (https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input/date)-->
+          <div id="output_div"></div>   
+        </div>
+      <div class="col-md-5">
+        <div id="mapid"></div>
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+      </div>
+    <div class="col-lg-4">
+      <h1>Ce jour là, il y avait ...</h1>
+    </div> <!--id="output_div"-->
+    
+    <script>
+
+var mymap = L.map('mapid').setView([35.79154, -78.7811169], 13);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
+    L.marker([35.79154, -78.7811169]).addTo(mymap)
+    .bindPopup('Ville de Cary<br> Située en Caroline du Nord.')
+    .openPopup();
+
+</script>
+     
+            <!-- /END THE FEATURETTES -->
+    <div id="meteo" class="row">
+      <div class="col-lg-4">
+        <img src="static/rain.gif" height="50%" width="50%">        
+        <h2>Pluie</h2>
+        <p>{{What}}</p>
+        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="static/snowman.gif" height="50%" width="50%"> 
+
+        <h2>Neige</h2>
+        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img src="static/thunder.gif" height="50%" width="50%"> 
+
+        <h2>Orage</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <canvas id="myChart"></canvas>
+      <hr class="featurette-divider">
+    </div><!-- /.row -->
+
+
+    <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+    
+        // The data for our dataset
+        data: {
+            labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            datasets: [{
+                label: 'Quantité de neige',
+                backgroundColor: 'rgb(149, 209, 240)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [15, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20]
+            }]
+        },
+    
+        // Configuration options go here
+        options: {}
+    });		
+      </script>
+
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer id=bas class="container">
+    <p class="float-end"><a href="#">Retourner en haut</a></p>
+    <p>&copy; 2021-2021 Bestest students of NSI's Companie, Inc. &middot; <a href="#">Politiques</a> &middot; <a href="#">Termes</a></p>
+  </footer>
+</main>
+
+
+<script src="{{ url_for('static',filename='js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ url_for('static',filename='js/cours.js') }}"></script>
+      
+  </body>
+</html>
