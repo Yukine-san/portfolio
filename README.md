@@ -2,6 +2,6 @@
 Personal Portoflio of my done, work-in-progress and upcoming projects.
 > https://yukine-san.github.io/Portfolio/
 
-- À rajouter plus tard :
+- To Be Added later :
   - Pixil profile
   - Itch.io page
