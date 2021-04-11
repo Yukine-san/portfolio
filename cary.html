@@ -58,9 +58,29 @@
 						<div class="inner">
 							<h1>Site web - Météo de Cary</h1>
 							<span class="image main"><img src="images/cary.gif" alt="" /></span>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+							<p>Cette année, par groupe de deux en NSI, j'ai du participer à la réalisation d'un site web. Le projet s’est déroulé sur 4 semaines avec pour objectif final un oral qui visait à présenter notre production.
+							En voici le détaillé :</p>
+							<ul><li><p><b>- Directives</b></p>
+								<ul>
+								<u>La page web devait impérativement comprendre les éléments suivants :</u>
+								<div class="sep">g</div>
+								<li>- Une base de données (BDD)</li>
+								<li>- Des requêtes SQL</li>
+								<li>- Du JavaScript</li>
+								<li>- Du PHP ou Python côté serveur</li>
+								<li>- Un modèle Bootstrap</li>
+								<li>- Un affichage en JavaScript de la BDD</li>
+								</ul>
+								</li>
+								<li><p><b>- Analyse</b></p>
+									<div class="row gtr-uniform">
+										<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+										<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+									</div>					
+								</li>		
+							</ul>
+							<p>Nous avons trouvé notre base de données sur data.gov qui recense la météo de la ville américaine de Cary depuis 2009, jour par jour. En conséquence, nous avons du convertir les unités de mesures, différentes de celles utilisées en France. Pour faire afficher la météo en fonction d'une date choisie, j'avais trouvé un script en JS puis j'ai finalement opté pour un input de type date, qui est un outil bien plus simple à mettre en place. Par une requête SQL, renseignée grâce à la bibliothèque sqlite3, nous récupérons les données de la date sélectionnée et les affichons sous la forme de textes et d'un graphique réalisé avec le module chart.js. Pour le bootstrap, nous avons rapidement trouvé un modèle nous plaisant que nous avons par la suite modifié selon nos envies. Quant à la carte, pour présenter la ville de Cary, nous avons utilisé le module leaflet.js. Enfin, afin d'avoir une idée de notre site, j'ai dessiné sur feuille le rendu final. Et pour finalement lancer la page web depuis un navigateur, nous avons opté pour l'utilisation de python et de la bibliothèque flask.</p>
 						</div>
 					</div>
 
